@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+// Reference: Microsoft cpprestsdk (https://github.com/microsoft/cpprestsdk)
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
 #include <cpprest/json.h>
@@ -33,11 +34,6 @@ void callStartApi(json::value& body, int& time, int& problemNum) {
 		  AUTH_KEY = jsonObject[U("auth_key")].as_string();
 		  problemNum = jsonObject[U("problem")].as_integer();
 		  time = jsonObject[U("time")].as_integer();
-
-		  cout << "\n== Start request 확인 ==\n"
-			   << "AUTH_KEY: " << AUTH_KEY << "\n"
-			   << "problem: " << problemNum << "\n"
-			   << "timer: " << time << "\n";
 		}).wait();
 }
 
@@ -108,17 +104,17 @@ void callSimulateApi(json::value& body, string& serverStatus, string& dist, int&
 		.then([&](json::value jsonObject) {
 		  serverStatus = jsonObject[U("status")].as_string();
 		  time = jsonObject[U("time")].as_integer();
-		  failCnt += jsonObject[U("failed_requests_count")].as_integer();
+		  // failCnt = jsonObject[U("failed_requests_count")].as_integer();
 		  dist = jsonObject[U("distance")].as_string();
 		}).wait();
 }
 
 int main() {
+	int time = -1, problemNum = -1, failCnt = 0;
+	string serverStatus = "Init", dist = "Init";
+
 	unordered_map<int, int> location_info;
 	unordered_map<int, pair<int, int>> truck_info;
-	int time, problemNum;
-	string serverStatus, dist;
-	int failCnt = 0;
 
 	json::value startBody;
 	startBody[U("problem")] = json::value::number(1);
@@ -144,9 +140,10 @@ int main() {
 
 	cout << "Truck Information" << endl;
 	for (auto item : truck_info)
-		cout << item.first << ", (" << item.second.first << ", " << item.second.second << "\n";
+		cout << item.first << ", (" << item.second.first << ", " << item.second.second << ")\n";
 	cout << endl;
 
+	cout << "AUTH_KEY: " << AUTH_KEY << endl;
 	cout << "Problem: " << problemNum << endl;
 	cout << "Server Status: " << serverStatus << endl;
 	cout << "Time: " << time << endl;
