@@ -133,22 +133,27 @@ int main() {
 		printf("Error exception: %s\n", e.what());
 	}
 
-	cout << "Location Information" << endl;
-	for (auto item : location_info)
-		cout << item.first << ", " << item.second << "\n";
-	cout << endl;
+	// Print Data
+	if (true) {
+		cout << "Location Information" << endl;
+		for (auto item : location_info)
+			cout << item.first << ", " << item.second << "\n";
+		cout << endl;
 
-	cout << "Truck Information" << endl;
-	for (auto item : truck_info)
-		cout << item.first << ", (" << item.second.first << ", " << item.second.second << ")\n";
-	cout << endl;
+		cout << "Truck Information" << endl;
+		for (auto item : truck_info)
+			cout << item.first << ", (" << item.second.first << ", " << item.second.second << ")\n";
+		cout << endl;
 
-	cout << "AUTH_KEY: " << AUTH_KEY << endl;
-	cout << "Problem: " << problemNum << endl;
-	cout << "Server Status: " << serverStatus << endl;
-	cout << "Time: " << time << endl;
-	cout << "Distance: " << dist << endl;
-	cout << "Fail Count: " << failCnt << endl;
+		cout << "AUTH_KEY: " << AUTH_KEY << endl;
+		cout << "Problem: " << problemNum << endl;
+		cout << "Server Status: " << serverStatus << endl;
+		cout << "Time: " << time << endl;
+		cout << "Distance: " << dist << endl;
+		cout << "Fail Count: " << failCnt << endl;
+	}
+
+
 
 	return 0;
 }
