@@ -1,0 +1,3 @@
+/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles/rebuild_cache.dir
+/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles/edit_cache.dir
+/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles/kakao.dir
