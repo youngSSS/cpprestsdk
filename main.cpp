@@ -8,50 +8,150 @@
 using namespace std;
 using namespace utility;                // Common utilities like string conversions
 using namespace web;                    // Common features like URIs
-using namespace web::http;                // Common HTTP functionality
+using namespace web::http;              // Common HTTP functionality
 using namespace web::http::client;      // HTTP client features
 using namespace concurrency::streams;   // Asynchronous streams
 
 string BASE_URL = "https://kox947ka1a.execute-api.ap-northeast-2.amazonaws.com/prod/users";
 string X_AUTH_TOKEN = "1a816001af873ef8b8efec6b36378fc0";
+string AUTH_KEY = "";
 
-// POST
-auto postRequest() {
-	auto postJson = pplx::create_task([]() {
-	  json::value jsonObject;
-	  jsonObject[U("problem")] = json::value::number(1);
+// Start API
+void callStartApi(json::value& body, int& time, int& problemNum) {
+	http_request request(methods::POST);
+	request.headers().add("X-Auth-Token", X_AUTH_TOKEN);
+	request.headers().add("Content-Type", "application/json");
+	request.set_body(body);
 
-	  http_request request(methods::POST);
-	  request.headers().add("X-Auth-Token", X_AUTH_TOKEN);
-	  request.headers().add("Content-Type", "application/json");
-	  request.set_body(jsonObject.serialize());
-
-	  return http_client(U(BASE_URL + "/start")).request(request);
-	})
+	http_client(U(BASE_URL + "/start")).request(request)
 		.then([](http_response response) {
 		  if (response.status_code() != 200)
-			  throw runtime_error("Returned - " + to_string(response.status_code()));
+			  throw runtime_error("Start API - " + to_string(response.status_code()));
+		  return response.extract_json();
+		})
+		.then([&](json::value jsonObject) {
+		  AUTH_KEY = jsonObject[U("auth_key")].as_string();
+		  problemNum = jsonObject[U("problem")].as_integer();
+		  time = jsonObject[U("time")].as_integer();
+
+		  cout << "\n== Start request 확인 ==\n"
+			   << "AUTH_KEY: " << AUTH_KEY << "\n"
+			   << "problem: " << problemNum << "\n"
+			   << "timer: " << time << "\n";
+		}).wait();
+}
+
+// Location API
+void callLocationApi(unordered_map<int, int>& location_info) {
+	http_request request(methods::GET);
+	request.headers().add("Authorization", AUTH_KEY);
+	request.headers().add("Content-Type", "application/json");
+
+	http_client(U(BASE_URL + "/locations")).request(request)
+		.then([](http_response response) {
+		  if (response.status_code() != 200)
+			  throw runtime_error("Location API - " + to_string(response.status_code()));
 		  return response.extract_json();
 		})
 		.then([](json::value jsonObject) {
-		  cout << "\n== POST request 확인 ==\n"
-			   << jsonObject[U("auth_key")].as_string() << "\n"
-			   << jsonObject[U("problem")] << "\n"
-			   << jsonObject[U("time")] << "\n";
-		});
+		  return jsonObject[U("locations")];
+		})
+		.then([&](json::value jsonObject) {
+		  auto array = jsonObject.as_array();
+		  for (auto& item : array) {
+			  int id = item[U("id")].as_integer();
+			  int count = item[U("located_bikes_count")].as_integer();
+			  location_info[id] = count;
+		  }
+		}).wait();
+}
 
-	return postJson;
+// Truck API
+void callTruckApi(unordered_map<int, pair<int, int>>& truck_info) {
+	http_request request(methods::GET);
+	request.headers().add("Authorization", AUTH_KEY);
+	request.headers().add("Content-Type", "application/json");
+
+	http_client(U(BASE_URL + "/trucks")).request(request)
+		.then([](http_response response) {
+		  if (response.status_code() != 200)
+			  throw runtime_error("Truck API - " + to_string(response.status_code()));
+		  return response.extract_json();
+		})
+		.then([](json::value jsonObject) {
+		  return jsonObject[U("trucks")];
+		})
+		.then([&](json::value jsonObject) {
+		  auto array = jsonObject.as_array();
+		  for (auto& item : array) {
+			  int id = item[U("id")].as_integer();
+			  int locId = item[U("location_id")].as_integer();
+			  int count = item[U("loaded_bikes_count")].as_integer();
+			  truck_info[id] = make_pair(locId, count);
+		  }
+		}).wait();
+}
+
+// Simulate API
+void callSimulateApi(json::value& body, string& serverStatus, string& dist, int& time, int& failCnt) {
+	http_request request(methods::PUT);
+	request.headers().add("Authorization", AUTH_KEY);
+	request.headers().add("Content-Type", "application/json");
+	request.set_body(body);
+
+	http_client(U(BASE_URL + "/simulate")).request(request)
+		.then([](http_response response) {
+		  if (response.status_code() != 200)
+			  throw runtime_error("Simulate API - " + to_string(response.status_code()));
+		  return response.extract_json();
+		})
+		.then([&](json::value jsonObject) {
+		  serverStatus = jsonObject[U("status")].as_string();
+		  time = jsonObject[U("time")].as_integer();
+		  failCnt += jsonObject[U("failed_requests_count")].as_integer();
+		  dist = jsonObject[U("distance")].as_string();
+		}).wait();
 }
 
 int main() {
-	auto postJson = postRequest();
+	unordered_map<int, int> location_info;
+	unordered_map<int, pair<int, int>> truck_info;
+	int time, problemNum;
+	string serverStatus, dist;
+	int failCnt = 0;
+
+	json::value startBody;
+	startBody[U("problem")] = json::value::number(1);
+
+	json::value commands;
+	commands[U("commands")][0][U("truck_id")] = json::value::number(0);
+	commands[U("commands")][0][U("command")] = json::value::array({ 2, 5, 4, 1, 6 });
 
 	try {
-		postJson.wait();
+		callStartApi(startBody, time, problemNum);
+		callLocationApi(location_info);
+		callTruckApi(truck_info);
+		callSimulateApi(commands, serverStatus, dist, time, failCnt);
 	}
 	catch (const exception& e) {
-		printf("Error exception:%s\n", e.what());
+		printf("Error exception: %s\n", e.what());
 	}
+
+	cout << "Location Information" << endl;
+	for (auto item : location_info)
+		cout << item.first << ", " << item.second << "\n";
+	cout << endl;
+
+	cout << "Truck Information" << endl;
+	for (auto item : truck_info)
+		cout << item.first << ", (" << item.second.first << ", " << item.second.second << "\n";
+	cout << endl;
+
+	cout << "Problem: " << problemNum << endl;
+	cout << "Server Status: " << serverStatus << endl;
+	cout << "Time: " << time << endl;
+	cout << "Distance: " << dist << endl;
+	cout << "Fail Count: " << failCnt << endl;
 
 	return 0;
 }

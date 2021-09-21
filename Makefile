@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named kakao
+# Target rules for targets named cpprestsdk
 
 # Build rule for target.
-kakao: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 kakao
-.PHONY : kakao
+cpprestsdk: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cpprestsdk
+.PHONY : cpprestsdk
 
 # fast build rule for target.
-kakao/fast:
-	$(MAKE) -f CMakeFiles/kakao.dir/build.make CMakeFiles/kakao.dir/build
-.PHONY : kakao/fast
+cpprestsdk/fast:
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/build
+.PHONY : cpprestsdk/fast
 
 main.o: main.cpp.o
 
@@ -129,7 +129,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/kakao.dir/build.make CMakeFiles/kakao.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +138,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/kakao.dir/build.make CMakeFiles/kakao.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,7 +147,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/kakao.dir/build.make CMakeFiles/kakao.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -158,7 +158,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... kakao"
+	@echo "... cpprestsdk"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

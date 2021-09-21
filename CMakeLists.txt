@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(kakao)
+project(cpprestsdk)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -20,9 +20,9 @@ link_directories(${CPPRESTSDK_SOURCE_DIR})
 link_directories(${OPENSSL_SOURCE_DIR})
 link_directories(${BOOST_SOURCE_DIR})
 
-add_executable(kakao main.cpp)
+add_executable(cpprestsdk main.cpp)
 
-target_link_libraries(kakao
+target_link_libraries(cpprestsdk
         ${CPPRESTSDK_SOURCE_DIR}/libcpprest.2.10.dylib
         ${CPPRESTSDK_SOURCE_DIR}/libcpprest.dylib
         ${OPENSSL_SOURCE_DIR}/libssl.dylib
