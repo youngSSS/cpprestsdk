@@ -74,12 +74,12 @@ clean: CMakeFiles/cpprestsdk.dir/clean
 CMakeFiles/cpprestsdk.dir/all:
 	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/depend
 	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles --progress-num=1,2 "Built target cpprestsdk"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles --progress-num=1,2,3,4 "Built target cpprestsdk"
 .PHONY : CMakeFiles/cpprestsdk.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/cpprestsdk.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ys/Files/GitHub/cpprestsdk/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ys/Files/GitHub/cpprestsdk/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/cpprestsdk.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ys/Files/GitHub/cpprestsdk/CMakeFiles 0
 .PHONY : CMakeFiles/cpprestsdk.dir/rule

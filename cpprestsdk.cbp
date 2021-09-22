@@ -47,6 +47,7 @@
 					<Add directory="/usr/local/opt/cpprestsdk/include"/>
 					<Add directory="/usr/local/opt/openssl/include"/>
 					<Add directory="/usr/local/opt/boost/include"/>
+					<Add directory="/Users/ys/Files/GitHub/cpprestsdk/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include"/>
@@ -71,6 +72,7 @@
 					<Add directory="/usr/local/opt/cpprestsdk/include"/>
 					<Add directory="/usr/local/opt/openssl/include"/>
 					<Add directory="/usr/local/opt/boost/include"/>
+					<Add directory="/Users/ys/Files/GitHub/cpprestsdk/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include"/>
@@ -86,6 +88,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/ys/Files/GitHub/cpprestsdk/Api.cpp">
+			<Option target="cpprestsdk"/>
+		</Unit>
+		<Unit filename="/Users/ys/Files/GitHub/cpprestsdk/Utils.cpp">
+			<Option target="cpprestsdk"/>
+		</Unit>
 		<Unit filename="/Users/ys/Files/GitHub/cpprestsdk/main.cpp">
 			<Option target="cpprestsdk"/>
 		</Unit>

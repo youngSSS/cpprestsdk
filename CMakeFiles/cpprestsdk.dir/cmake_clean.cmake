@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/cpprestsdk.dir/Api.cpp.o"
+  "CMakeFiles/cpprestsdk.dir/Utils.cpp.o"
   "CMakeFiles/cpprestsdk.dir/main.cpp.o"
   "cpprestsdk"
   "cpprestsdk.pdb"

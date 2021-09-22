@@ -123,6 +123,60 @@ cpprestsdk/fast:
 	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/build
 .PHONY : cpprestsdk/fast
 
+Api.o: Api.cpp.o
+
+.PHONY : Api.o
+
+# target to build an object file
+Api.cpp.o:
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/Api.cpp.o
+.PHONY : Api.cpp.o
+
+Api.i: Api.cpp.i
+
+.PHONY : Api.i
+
+# target to preprocess a source file
+Api.cpp.i:
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/Api.cpp.i
+.PHONY : Api.cpp.i
+
+Api.s: Api.cpp.s
+
+.PHONY : Api.s
+
+# target to generate assembly for a file
+Api.cpp.s:
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/Api.cpp.s
+.PHONY : Api.cpp.s
+
+Utils.o: Utils.cpp.o
+
+.PHONY : Utils.o
+
+# target to build an object file
+Utils.cpp.o:
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/Utils.cpp.o
+.PHONY : Utils.cpp.o
+
+Utils.i: Utils.cpp.i
+
+.PHONY : Utils.i
+
+# target to preprocess a source file
+Utils.cpp.i:
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/Utils.cpp.i
+.PHONY : Utils.cpp.i
+
+Utils.s: Utils.cpp.s
+
+.PHONY : Utils.s
+
+# target to generate assembly for a file
+Utils.cpp.s:
+	$(MAKE) -f CMakeFiles/cpprestsdk.dir/build.make CMakeFiles/cpprestsdk.dir/Utils.cpp.s
+.PHONY : Utils.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -159,6 +213,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... cpprestsdk"
+	@echo "... Api.o"
+	@echo "... Api.i"
+	@echo "... Api.s"
+	@echo "... Utils.o"
+	@echo "... Utils.i"
+	@echo "... Utils.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
