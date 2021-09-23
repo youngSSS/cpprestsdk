@@ -6,5 +6,5 @@ CXX_FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sd
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/local/opt/cpprestsdk/include -I/usr/local/opt/openssl/include -I/usr/local/opt/boost/include 
+CXX_INCLUDES = -I/usr/local/opt/cpprestsdk/include -I/usr/local/opt/openssl/include -I/usr/local/opt/boost/include -I/Users/ys/Files/GitHub/cpprestsdk/include 
 

@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/Users/ys/Files/GitHub/cpprestsdk/Api.cpp" "/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles/cpprestsdk.dir/Api.cpp.o"
+  "/Users/ys/Files/GitHub/cpprestsdk/Utils.cpp" "/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles/cpprestsdk.dir/Utils.cpp.o"
   "/Users/ys/Files/GitHub/cpprestsdk/main.cpp" "/Users/ys/Files/GitHub/cpprestsdk/CMakeFiles/cpprestsdk.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
@@ -13,6 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/local/opt/cpprestsdk/include"
   "/usr/local/opt/openssl/include"
   "/usr/local/opt/boost/include"
+  "include"
   )
 
 # Targets to which this target links.

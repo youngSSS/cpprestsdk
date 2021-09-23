@@ -6,16 +6,36 @@
 
 #IncludeRegexTransform: 
 
-/Users/ys/Files/GitHub/cpprestsdk/main.cpp
+/Users/ys/Files/GitHub/cpprestsdk/include/Api.hpp
 iostream
 -
 string
+-
+unordered_map
 -
 cpprest/http_client.h
 -
 cpprest/filestream.h
 -
 cpprest/json.h
+-
+
+/Users/ys/Files/GitHub/cpprestsdk/include/Utils.hpp
+iostream
+-
+string
+-
+vector
+-
+unordered_map
+-
+
+/Users/ys/Files/GitHub/cpprestsdk/main.cpp
+include/Api.hpp
+/Users/ys/Files/GitHub/cpprestsdk/include/Api.hpp
+include/Utils.hpp
+/Users/ys/Files/GitHub/cpprestsdk/include/Utils.hpp
+queue
 -
 
 /usr/local/opt/boost/include/boost/array.hpp
