@@ -14,6 +14,7 @@
 <br/>`cd Binaries`
 <br/>`./test_runner *_test.dylib`
 
-# Reference
+# Reference, 2021.09.25
+### MS CPPRESTSDK(Casablanca)
 1. https://github.com/microsoft/cpprestsdk
 2. https://github.com/microsoft/cpprestsdk/wiki/How-to-build-for-Mac-OS-X

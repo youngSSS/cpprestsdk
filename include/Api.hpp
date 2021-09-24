@@ -5,7 +5,7 @@
 #include <string>
 #include <unordered_map>
 
-// Reference: Microsoft cpprestsdk (https://github.com/microsoft/cpprestsdk)
+// Reference: Microsoft cpprestsdk (https://github.com/microsoft/cpprestsdk), 2021.09.25
 #include <cpprest/http_client.h>
 #include <cpprest/filestream.h>
 #include <cpprest/json.h>
