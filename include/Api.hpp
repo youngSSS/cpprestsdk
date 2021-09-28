@@ -18,16 +18,22 @@ using namespace web::http::client;      // HTTP client features
 using namespace concurrency::streams;   // Asynchronous streams
 
 // Start API
-void callStartApi(json::value& body, int& time, int& problemNum);
+void callStartApi(json::value& body, int& problemNum, int& time);
 
-// Location API
-void callLocationApi(vector<vector<int>>& locationInfo, int& mapSize);
+// WaitingLine API
+void callWaitingLineApi(unordered_map<int, int>& waitingInfo);
 
-// Truck API
-void callTruckApi(unordered_map<int, pair<int, int>>& truckInfo);
+// GameResult API
+void callGameResultApi(vector<vector<int>>& gameResult);
 
-// Simulate API
-void callSimulateApi(json::value& body, string& serverStatus, string& dist, int& time, int& failCnt);
+// UserInfo API
+void callUserInfoApi(unordered_map<int, int>& userInfo);
+
+// Match API
+void callMatchApi(json::value& body, string& serverStatus, int& time);
+
+// ChangeGrade API
+void callChangeGradeApi(json::value& body, string& serverStatus);
 
 // Score API
 void callScoreApi();

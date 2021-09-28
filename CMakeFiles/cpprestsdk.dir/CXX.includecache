@@ -6,12 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/ys/Files/GitHub/cpprestsdk/Api.cpp
-include/Api.hpp
-/Users/ys/Files/GitHub/cpprestsdk/include/Api.hpp
-include/Utils.hpp
-/Users/ys/Files/GitHub/cpprestsdk/include/Utils.hpp
-
 /Users/ys/Files/GitHub/cpprestsdk/include/Api.hpp
 iostream
 -
@@ -34,6 +28,14 @@ string
 vector
 -
 unordered_map
+-
+
+/Users/ys/Files/GitHub/cpprestsdk/main.cpp
+include/Api.hpp
+/Users/ys/Files/GitHub/cpprestsdk/include/Api.hpp
+include/Utils.hpp
+/Users/ys/Files/GitHub/cpprestsdk/include/Utils.hpp
+set
 -
 
 /usr/local/opt/boost/include/boost/array.hpp
